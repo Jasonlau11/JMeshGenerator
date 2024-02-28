@@ -1,4 +1,4 @@
-package org.JMeshGenerator.Geometry.TwoDimensionalElements;
+package org.JMeshGenerator.Geometry.PlanarElements;
 
 import org.JMeshGenerator.Geometry.AbstractNode;
 import org.JMeshGenerator.Geometry.PolygonalElement;

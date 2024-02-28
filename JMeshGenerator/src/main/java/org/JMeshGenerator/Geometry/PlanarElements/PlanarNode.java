@@ -1,4 +1,4 @@
-package org.JMeshGenerator.Geometry.TwoDimensionalElements;
+package org.JMeshGenerator.Geometry.PlanarElements;
 
 import lombok.Data;
 import org.JMeshGenerator.Exception.CalculationException;
