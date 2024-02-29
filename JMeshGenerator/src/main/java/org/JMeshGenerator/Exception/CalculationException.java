@@ -4,8 +4,7 @@ import lombok.Data;
 
 @Data
 public class CalculationException extends RuntimeException {
-    private String msg;
-    public CalculationException(String msg) {
-        this.msg = msg;
+    public CalculationException(String message) {
+        super(message);
     }
 }

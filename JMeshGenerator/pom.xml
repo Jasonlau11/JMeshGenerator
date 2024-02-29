@@ -44,6 +44,11 @@
             <artifactId>lombok</artifactId>
             <version>1.18.28</version>
         </dependency>
+        <dependency>
+            <groupId>org.la4j</groupId>
+            <artifactId>la4j</artifactId>
+            <version>0.6.0</version>
+        </dependency>
 
         <!-- Guava -->
         <dependency>

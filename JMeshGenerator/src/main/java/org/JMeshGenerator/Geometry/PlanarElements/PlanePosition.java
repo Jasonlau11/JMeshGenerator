@@ -1,8 +1,12 @@
 package org.JMeshGenerator.Geometry.PlanarElements;
 
 import lombok.Data;
-import org.JMeshGenerator.Exception.CalculationException;
+import org.JMeshGenerator.Exception.ElementIncompatibleException;
 import org.JMeshGenerator.Geometry.AbstractPosition;
+
+import java.util.Objects;
+
+import static org.JMeshGenerator.Algorithm.Common.Constance.EPSILON;
 
 @Data
 public class PlanePosition extends AbstractPosition {
@@ -11,10 +15,32 @@ public class PlanePosition extends AbstractPosition {
 
     @Override
     public double distanceTo(AbstractPosition other) {
-        if (!(other instanceof PlanePosition)) {
-            throw new CalculationException("Incompatible position types.");
+        if (sameType(other)) {
+            throw new ElementIncompatibleException("Incompatible position types.");
         }
-        PlanePosition otherPos = (PlanePosition) other;
-        return Math.sqrt(Math.pow(this.x - otherPos.x, 2) + Math.pow(this.y - otherPos.y, 2));
+        PlanePosition planePosition = (PlanePosition) other;
+        return Math.sqrt(Math.pow(this.x - planePosition.x, 2) + Math.pow(this.y - planePosition.y, 2));
+    }
+
+    @Override
+    public boolean same(AbstractPosition other) {
+        if (sameType(other)) {
+            throw new ElementIncompatibleException("Incompatible position types.");
+        }
+        PlanePosition planePosition = (PlanePosition) other;
+        return Math.abs(this.getX() - planePosition.getX()) < EPSILON &&
+                Math.abs(this.getY() - planePosition.getY()) < EPSILON;
+    }
+
+    @Override
+    public double[] buildVector(AbstractPosition other) {
+        if (sameType(other)) {
+            throw new ElementIncompatibleException("Incompatible position types.");
+        }
+        if (Objects.isNull(other)) {
+            return new double[0];
+        }
+        PlanePosition planePosition = (PlanePosition) other;
+        return new double[]{this.getX() - planePosition.getX(), this.getY() - planePosition.getY()};
     }
 }
