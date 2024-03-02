@@ -6,7 +6,7 @@ import org.JMeshGenerator.Geometry.AbstractPosition;
 
 import java.util.Objects;
 
-import static org.JMeshGenerator.Algorithm.Common.Constance.EPSILON;
+import static org.JMeshGenerator.Common.Constance.EPSILON;
 
 @Data
 public class PlanePosition extends AbstractPosition {
