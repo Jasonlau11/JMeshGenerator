@@ -7,16 +7,18 @@ public class Sudoku {
     private Map<Integer, int[]> rowMap = new HashMap<>();
     private Map<Integer, int[]> columnMap = new HashMap<>();
 
-    public boolean solve(int[][] puzzle) {
-        partition(puzzle); // 初始化行、列、子数独映射
-
-        return solveRecursive(puzzle);
+    public int[][] solve(int[][] puzzle) {
+        if (solveRecursive(puzzle)) {
+            return puzzle;
+        }
+        return puzzle;
     }
 
     private boolean solveRecursive(int[][] puzzle) {
         for (int rowIndex = 0; rowIndex < 9; rowIndex++) {
             for (int colIndex = 0; colIndex < 9; colIndex++) {
                 if (puzzle[rowIndex][colIndex] == 0) { // 找到一个空格
+                    partition(puzzle);
                     // 获取当前位置可用的数字列表
                     List<Integer> availableNums = getAvailableNumsForCell(rowIndex, colIndex);
 
